@@ -1,4 +1,7 @@
+export const revalidate = 300 // revalidate at most every 5 minutes
+
 import Image from "next/image";
+import Link from "next/link";
 import puppeteer from "puppeteer";
 
 export default async function Home() {
@@ -12,6 +15,7 @@ export default async function Home() {
         width={800}
         height={600}
       />
+      Source code: <Link href="https://github.com/chromium-for-lambda/chromium-on-vercel">github.com/chromium-for-lambda/chromium-on-vercel</Link>
     </main>
   );
 }
