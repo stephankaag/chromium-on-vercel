@@ -1,6 +1,4 @@
 import Image from "next/image";
-import { tmpdir } from "os";
-import { join } from "path";
 import puppeteer from "puppeteer";
 
 export default async function Home() {
@@ -19,18 +17,17 @@ export default async function Home() {
 }
 
 async function getScreenshot() {
-  const url = `https://news.ycombinator.com`;
-
   const install = require(`puppeteer/internal/node/install.js`).downloadBrowser;
   await install();
 
   const browser = await puppeteer.launch({
-    args: ["--use-gl=angle", "--use-angle=swiftshader", "--single-process"],
+    args: ["--use-gl=angle", "--use-angle=swiftshader", "--single-process", "--no-sandbox"],
     headless: true,
   });
 
   const page = await browser.newPage();
 
+  const url = `https://news.ycombinator.com`;
   await page.goto(url);
 
   const [image, title] = await Promise.all([page.screenshot(), page.title()]);
@@ -39,7 +36,7 @@ async function getScreenshot() {
   await browser.close();
 
   return {
-    title: title,
-    image: image,
+    title,
+    image,
   };
 }
