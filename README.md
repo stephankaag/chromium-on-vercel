@@ -6,3 +6,6 @@ Configure the following environment variables:
 PUPPETEER_DOWNLOAD_BASE_URL=https://files.chromiumforlambda.org/amazon-linux-2023/x86_64
 PUPPETEER_CACHE_DIR=/tmp
 ```
+
+## Example deployment
+https://chromium-on-vercel.vercel.app
